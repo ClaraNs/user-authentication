@@ -32,12 +32,12 @@
 
 ### ⚡ Telas
 
-#### Tela de Login
+#### • Tela de Login
 <p align="center">
   <img src="screenshots/login.png" alt="Tela de Login" width="700"/>
 </p>
 
-#### Tela de Cadastro
+#### • Tela de Cadastro
 <p align="center">
   <img src="screenshots/cadastro.png" alt="Tela de Cadastro" width="700"/>
 </p>
