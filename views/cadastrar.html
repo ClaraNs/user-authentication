@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="/public/css/styles.css">
+</head>
+<body>
+    <div id="error-container">
+        <p id="error-message" style="color: red;"><%= error || '' %></p>
+    </div>
+
+    <div class="container">
+        <img src="/public/images/logo.png" alt="logo" class="logo"/>
+        <h2>Faça seu cadatro</h2>
+
+        <form id="registerForm" method="post" action="/cadastrar">
+            <input type="text" id="username" name="username" placeholder="Nome de usuário" oninput="checkUsername()" required/>
+            <input type="text" name="name" placeholder="Nome" required/>
+            <input type="email" name="email" placeholder="Email" required/>
+            <input type="date" name="birthdate" placeholder="Data de Nascimento" required />
+            <input type="password" name="password" placeholder="Senha" />
+            <input type="password" name="confirm-password" placeholder="Confirmar senha" />
+            <input type="submit" value="Cadastrar" class="button" />
+        </form>
+
+        <p>Já tem uma conta? <a href="/">Entre</a></p>
+    </div>
+
+    <script src="/public/js/register.js"></script>
+</body>
+</html>

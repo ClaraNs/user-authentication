@@ -1,0 +1,100 @@
+body{
+    font-family: Helvetica;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container{
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 400px;
+}
+
+h2{
+    color: #333;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="date"]
+{   
+    padding: 10px;
+    box-sizing: border-box;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+#error-message {
+    color: red;
+    margin-top: 10px;
+}
+
+/*#username-status {
+    margin-top: 5px;  
+    margin-bottom: 5px; 
+    font-size: 14px;   
+    color: red;        
+}*/
+
+#error-container {
+    position: absolute;
+    top: 20px; /* Distância do topo da tela */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    text-align: center;
+    z-index: 1000; /* Garante que fique sobre outros elementos */
+}
+
+#status-message {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+#status-message.error {
+    color: red;
+}
+
+#status-message.success {
+    color: green;
+}
+
+input[type="submit"],
+a.button,
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid #007BFF; /* Cor da borda */
+    border-radius: 18px; /* Borda arredondada */
+    background-color: #007BFF; /* Cor de fundo */
+    color: #fff; /* Cor do texto */
+    text-decoration: none; /* Remove sublinhado */
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s; /* Suavização de transição */
+    margin-top: 20px;
+}
+
+input[type="submit"],
+a.button:hover,
+.button:hover {
+    background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+    border-color: #0056b3; /* Cor da borda ao passar o mouse */
+}
+
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 100px; /* Ajuste conforme necessário */
+}
