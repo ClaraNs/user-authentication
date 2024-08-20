@@ -89,17 +89,26 @@ app.get('/cadastrar', (req, res) => {
 });
 
 app.post('/cadastrar', async (req, res) => {
-    const { username, name, email, birthdate, password, 'confirm-password': confirmPassword } = req.body;
+    const {name, email, birthdate, password, 'confirm-password': confirmPassword } = req.body;
 
     if (password != confirmPassword) {
         return res.render('cadastrar', {
             error: 'As senhas não coincidem.',
-            username,
             name,
             email,
             birthdate,
             password: '',
             confirmPassword: ''
+        });
+    }
+
+    // Verifica o nivel da senha
+    if(!validatePassword(password)){
+        return res.render('cadastrar', {
+            error: 'A senha deve conter pelo menos 8 caracteres, incluindo maiúsculas, minúsculas, dígitos e caracteres especiais.',
+            name,
+            email,
+            birthdate
         });
     }
 
@@ -111,19 +120,12 @@ app.post('/cadastrar', async (req, res) => {
         const emailCheck = await pool.query('SELECT id FROM users WHERE email = $1', [email]);
 
         if(emailCheck.rowCount > 0){
-            console.log('EMAIL JÁ EXISTE')
             return res.render('cadastrar', {error: 'O email já está cadastrado'}); //talvez voltar para a tela login?
         }
 
-        /*const userNameCheck =  await pool.query('SELECT id FROM users WHERE username = $1', [username])
-
-        if(userNameCheck.rowCount > 0){
-            return res.render('cadastrar', {error: 'Username já existe.'}); 
-        }*/
-
         await pool.query(
-            'INSERT INTO users(username, name, email, birthdate, password) VALUES($1, $2, $3, $4, $5)',
-            [username, name, email, birthdate, hashedPassword]
+            'INSERT INTO users(name, email, birthdate, password) VALUES($1, $2, $3, $4)',
+            [ name, email, birthdate, hashedPassword]
 
         );
         res.render('logado', { email, name })
@@ -133,7 +135,20 @@ app.post('/cadastrar', async (req, res) => {
     }
 });
 
-app.get('/check-username', async (req, res) => {
+// Validacoes
+
+const validatePassword = (password) => {
+    const minLength = 8;
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasLowerCase = /[a-z]/.test(password);
+    const hasDigit = /\d/.test(password);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+    return password.length >= minLength && hasUpperCase && hasLowerCase && hasDigit && hasSpecialChar;
+};
+
+
+/*app.get('/check-username', async (req, res) => {
     const { username } = req.query;
 
     try {
@@ -148,7 +163,7 @@ app.get('/check-username', async (req, res) => {
         console.error('Erro ao consultar o banco de dados', error);
         res.status(500).json({ error: 'Erro ao consultar o banco de dados'});
     }
-});
+});*/
 
 app.listen(port, () => {
     console.log('Servidor rodando');

@@ -98,3 +98,24 @@ a.button:hover,
     left: 20px;
     width: 100px; /* Ajuste conforme necessário */
 }
+
+.password-strength-bar{
+    width: 100%;
+    height: 20px;
+    background-color: #ddd;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.strength-indicator{
+    height: 100%;
+    width: 0;
+    background-color: #e70b0b;
+    transition: width 0.5s ease, background-color 0.5s ease;
+}
+
+#password-strength-text{
+    color: #666;
+    font-size: 0.9rem;
+}

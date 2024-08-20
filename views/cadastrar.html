@@ -16,13 +16,16 @@
         <h2>Faça seu cadatro</h2>
 
         <form id="registerForm" method="post" action="/cadastrar">
-            <input type="text" id="username" name="username" placeholder="Nome de usuário" oninput="checkUsername()" required/>
-            <input type="text" name="name" placeholder="Nome" required/>
-            <input type="email" name="email" placeholder="Email" required/>
-            <input type="date" name="birthdate" placeholder="Data de Nascimento" required />
-            <input type="password" name="password" placeholder="Senha" />
-            <input type="password" name="confirm-password" placeholder="Confirmar senha" />
-            <input type="submit" value="Cadastrar" class="button" />
+            <input type="text" id="user-name" name="name" placeholder="Nome" required/>
+            <input type="email" id="user-email" name="email" placeholder="Email" required/>
+            <input type="date" id="user-bday" name="birthdate" placeholder="Data de Nascimento" required />
+            <input type="password" id="user-password" name="password" placeholder="Senha" />
+            <div class="password-strength-bar">
+                <div id="password-strength-indicator" class="strength-indicator"></div>
+            </div>
+            <p id="password-strength-text"></p>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirmar senha" />
+            <input type="submit" value="Cadastrar" class="button"/>
         </form>
 
         <p>Já tem uma conta? <a href="/">Entre</a></p>
